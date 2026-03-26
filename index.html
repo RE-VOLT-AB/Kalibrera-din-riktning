@@ -68,7 +68,7 @@
       font-family: inherit;
     }
     .opt:hover { border-color: #aaa; background: #f9f9f9; }
-    .opt.sel { border-color: #3B6D11; background: #EAF3DE; color: #27500A; }
+    .opt.sel { border-color: #3B6D11; background: #EAF3DE; color: #27500A; transform: scale(1.01); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     .nav { display: flex; justify-content: flex-end; margin-top: 1.25rem; min-height: 36px; align-items: center; gap: 8px; }
     .hint { font-size: 12px; color: #aaa; margin-right: auto; }
     .btn-back {
@@ -103,16 +103,21 @@
     .fade { animation: fi 0.22s ease; }
     @keyframes fi { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     .r-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 4px; }
-    .r-state { font-size: 24px; font-weight: 700; color: #111; margin-bottom: 12px; }
-    .r-body { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 1.25rem; white-space: pre-line; }
-    .r-tip { padding: 12px 14px; background: #EAF3DE; border-left: 2px solid #3B6D11; margin-bottom: 1.25rem; }
+    .r-state { font-size: 22px; font-weight: 700; color: #111; margin-bottom: 16px; }
+    .r-body { font-size: 13px; color: #444; line-height: 1.8; margin-bottom: 1.5rem; }
+    .r-body p { margin-bottom: 0.85rem; }
+    .r-body p:last-child { margin-bottom: 0; }
+    .r-tip { padding: 12px 14px; background: #EAF3DE; border-left: 2px solid #3B6D11; margin-bottom: 1.5rem; }
     .r-tip-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3B6D11; margin-bottom: 5px; }
     .r-tip-text { font-size: 13px; color: #27500A; line-height: 1.65; }
-    .bar-row { display: flex; gap: 8px; padding-top: 1.25rem; border-top: 1px solid #f0f0f0; margin-bottom: 1.25rem; }
+    .bar-row { display: flex; gap: 8px; padding-top: 1.25rem; border-top: 1px solid #f0f0f0; margin-bottom: 1.5rem; }
     .bar-item { flex: 1; }
     .bar-name { font-size: 11px; color: #aaa; margin-bottom: 5px; }
     .bar-track { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; background: #3B6D11; transition: width 0.5s ease; }
+    .r-cta { font-size: 13px; color: #333; line-height: 1.75; margin-bottom: 1.5rem; }
+    .r-cta p { margin-bottom: 0.5rem; }
+    .r-cta p:last-child { font-weight: 700; margin-bottom: 0; }
     .bar-fill.low { background: #ddd; }
     .djupare-toggle { padding-top: 1.25rem; border-top: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: #ffcc00; border-radius: 8px; padding: 13px 18px; margin-top: 1.25rem; transition: filter 0.15s; }
     .djupare-toggle:hover { filter: brightness(1.08); }
@@ -145,7 +150,7 @@
     .btn-restart:hover { color: #666; }
     .cookie-banner {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
+      top: 0; left: 0; right: 0;
       background: #1a2e1b;
       color: rgba(255,255,255,0.85);
       padding: 1rem 1.5rem;
@@ -227,6 +232,7 @@
           <p class="r-tip-text" id="rTip"></p>
         </div>
         <div class="bar-row" id="barRow"></div>
+        <p class="r-cta" id="rCta"></p>
         <div class="djupare-toggle" onclick="toggleDjupare()">
           <span class="djupare-toggle-label">Vill du gå djupare?</span>
           <span class="djupare-toggle-arrow" id="djupareArrow">&#8964;</span>
@@ -246,8 +252,8 @@
             <p>Du kommer ganska snabbt känna om det här är något du behöver just nu.</p>
           </div>
           <div class="book-btns">
-            <a class="book-btn book-btn-primary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/EGntA_O7WU6tTOkBhgVyHw2?anonymous&ep=mlink" target="_blank">Boka 30 min strategisamtal</a>
-            <a class="book-btn book-btn-secondary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/1ezsnHu52EOShxJ3-_BduA2?bookingcode=42e5b203-5cb6-43d7-8811-5629a38eef85&anonymous&ep=mlink" target="_blank">Utforska RE-VOLT Rise</a>
+            <a class="book-btn book-btn-primary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/EGntA_O7WU6tTOkBhgVyHw2?anonymous&ep=mlink" target="_blank">Boka ett första samtal</a>
+            <a class="book-btn book-btn-secondary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/1ezsnHu52EOShxJ3-_BduA2?bookingcode=42e5b203-5cb6-43d7-8811-5629a38eef85&anonymous&ep=mlink" target="_blank">Läs mer om RE-VOLT Rise</a>
           </div>
         </div>
       </div>
@@ -265,15 +271,15 @@
       { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I action – genom ökad aktivitet och effektivitet", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }] }
     ];
     const R = {
-      press: { label: "Tryck", body: "Det ser ut som att du rör dig snabbt – men inte alltid med full klarhet i riktningen.\n\nFarten finns där. Drivet också.\n\nMen det kan vara så att vissa beslut sker mer reaktivt än utifrån vad du faktiskt vill.\n\nInte för att du saknar kapacitet – utan för att tempot ibland tar över.", tip: "Testa att välja bort en sak den närmaste veckan. Inte för att bromsa – utan för att se vad som faktiskt håller när tempot får sjunka lite." },
-      flöde: { label: "Överflöd", body: "Det ser ut som att du har fler möjligheter än de flesta.\n\nOch det kan också vara det som gör det svårare att välja.\n\nDu rör dig framåt – men i flera riktningar samtidigt.\n\nKanske märker du att mycket påbörjas, men inte alltid får landa fullt ut. Inte för att du saknar potential – utan för att allt känns möjligt.", tip: "Skriv ned allt du har igång. Se vad som faktiskt vill få din uppmärksamhet just nu. Välj ett spår – inte för alltid, men tillräckligt länge för att något ska hinna bli klart." },
-      välmående: { label: "Välmående", body: "Det ser ut som att du har byggt något som fungerar.\n\nOch det kan också vara det som gör det svårare att ifrågasätta.\n\nDet är sällan en tydlig kris – men kanske märker du att något har stannat av.\n\nFriktionen som en gång drev dig framåt finns inte riktigt kvar på samma sätt. Det fungerar – men kanske inte fullt ut som du egentligen vill.", tip: "Hitta en fråga du undviker att ställa dig själv. Skriv ned den. Inte för att den är farlig – utan för att svaret kan innebära att du behöver välja igen." }
+      press: { label: "Tryck", cta: "Om du känner igen dig i tempot – men inte riktigt i riktningen…\ndå kan det vara värt att stanna upp och se vad som faktiskt styr dina beslut just nu.\nInte för att göra mindre – utan för att börja röra dig i något som är ditt.", body: "Det ser ut som att du rör dig snabbt – men inte alltid med full klarhet i riktningen.\n\nFarten finns där. Drivet också.\n\nMen det kan vara så att vissa beslut sker mer reaktivt än utifrån vad du faktiskt vill.\n\nInte för att du saknar kapacitet – utan för att tempot ibland tar över.", tip: "Testa att välja bort en sak den närmaste veckan. Inte för att bromsa – utan för att se vad som faktiskt håller när tempot får sjunka lite." },
+      flöde: { label: "Överflöd", cta: "Om du märker att du har mycket på gång – men inte riktigt känner vad som faktiskt spelar roll…\ndå handlar nästa steg sällan om fler idéer.\nUtan om att få klarhet i vad som faktiskt är värt att bygga vidare på.", body: "Det ser ut som att du har fler möjligheter än de flesta.\n\nOch det kan också vara det som gör det svårare att välja.\n\nDu rör dig framåt – men i flera riktningar samtidigt.\n\nKanske märker du att mycket påbörjas, men inte alltid får landa fullt ut. Inte för att du saknar potential – utan för att allt känns möjligt.", tip: "Skriv ned allt du har igång. Se vad som faktiskt vill få din uppmärksamhet just nu. Välj ett spår – inte för alltid, men tillräckligt länge för att något ska hinna bli klart." },
+      välmående: { label: "Välmående", cta: "Om det fungerar – men inte riktigt känns som du vill att det ska…\ndå är det ofta där något nytt vill ta form.\nInte genom att göra mer, utan genom att våga se vad du kanske redan vet.", body: "Det ser ut som att du har byggt något som fungerar.\n\nOch det kan också vara det som gör det svårare att ifrågasätta.\n\nDet är sällan en tydlig kris – men kanske märker du att något har stannat av.\n\nFriktionen som en gång drev dig framåt finns inte riktigt kvar på samma sätt. Det fungerar – men kanske inte fullt ut som du egentligen vill.", tip: "Hitta en fråga du undviker att ställa dig själv. Skriv ned den. Inte för att den är farlig – utan för att svaret kan innebära att du behöver välja igen." }
     };
     const tieResults = {
-      "flöde+press": { label: "Tryck & Överflöd", body: "Det ser ut som att du både driver och startar mycket.\n\nDet händer saker – men kanske inte alltid i en riktning som får landa.\n\nDu skapar rörelse, men det kan vara svårt att känna vad som faktiskt är viktigast.\n\nKanske märker du att mycket känns aktuellt – samtidigt.", tip: "Testa att avsluta något du redan har påbörjat innan du startar något nytt. Inte som disciplin – utan för att känna vad som faktiskt är värt att bära vidare." },
-      "press+välmående": { label: "Tryck & Välmående", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen de kanske inte alltid drar åt samma håll.\n\nEn del av dig vill framåt – medan en annan vill behålla det som redan fungerar.\n\nDet kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar." },
-      "flöde+välmående": { label: "Överflöd & Välmående", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt.\n\nDet fungerar – men kanske inte fullt ut engagerar.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
-      "all": { label: "Alla tre", body: "Det ser ut som att du kan röra dig mellan olika tillstånd. Anpassa, växla tempo, hitta nya vägar.\n\nDet är en styrka.\n\nMen det kan också göra det svårare att stanna i ett val tillräckligt länge.\n\nKanske märker du att du skiftar beroende på situation – mer än utifrån ett tydligt beslut.", tip: "Nästa gång du känner att du skiftar – stanna upp. Fråga dig: \"Är det här ett val jag gör, eller något jag reagerar på?\"" }
+      "flöde+press": { label: "Tryck & Överflöd", cta: "Om du känner att du både driver och startar mycket – men att inget riktigt får landa…\ndå kan det finnas värde i att stanna upp och känna efter vad som faktiskt är viktigt för dig här och nu.\nInte allt på en gång – men kanske är det dags att börja välja bort.", body: "Det ser ut som att du både driver och startar mycket.\n\nDet händer saker – men kanske inte alltid i en riktning som får landa.\n\nDu skapar rörelse, men det kan vara svårt att känna vad som faktiskt är viktigast.\n\nKanske märker du att mycket känns aktuellt – samtidigt.", tip: "Testa att avsluta något du redan har påbörjat innan du startar något nytt. Inte som disciplin – utan för att känna vad som faktiskt är värt att bära vidare." },
+      "press+välmående": { label: "Tryck & Välmående", cta: "Om du känner igen dig i att både vilja framåt – och samtidigt hålla kvar i det som fungerar…\ndå är det ofta där riktningen blir otydlig.\nInte för att något är fel – utan för att något nytt inte riktigt fått ta plats än.", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen de kanske inte alltid drar åt samma håll.\n\nEn del av dig vill framåt – medan en annan vill behålla det som redan fungerar.\n\nDet kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar." },
+      "flöde+välmående": { label: "Överflöd & Välmående", cta: "Om du har utrymme och möjligheter – men inte riktigt känner vad som engagerar fullt ut…\ndå handlar det sällan om att göra mer.\nUtan om att komma närmare vad som faktiskt är värt din energi.", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt.\n\nDet fungerar – men kanske inte fullt ut engagerar.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
+      "all": { label: "Alla tre", cta: "Om du känner att du kan röra dig mellan olika tillstånd – men inte alltid utifrån ett tydligt val…\ndå kan det vara värt att stanna upp och se vad som faktiskt styr.\nInte bara i situationen – utan i dig.", body: "Det ser ut som att du kan röra dig mellan olika tillstånd. Anpassa, växla tempo, hitta nya vägar.\n\nDet är en styrka.\n\nMen det kan också göra det svårare att stanna i ett val tillräckligt länge.\n\nKanske märker du att du skiftar beroende på situation – mer än utifrån ett tydligt beslut.", tip: "Nästa gång du känner att du skiftar – stanna upp. Fråga dig: \"Är det här ett val jag gör, eller något jag reagerar på?\"" }
     };
     let cur = 0, sel = null, scores = { press: 0, flöde: 0, välmående: 0 }, history = [];
     function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
@@ -314,8 +320,10 @@
       else if (tied.length === 3) { result = tieResults["all"]; document.getElementById("rEyebrow").textContent = "Ditt mönster är fördelat mellan"; }
       else { result = tieResults[tied.join("+")] || R[tied[0]]; document.getElementById("rEyebrow").textContent = "Ditt mönster rör sig mellan"; }
       document.getElementById("rState").textContent = result.label;
-      document.getElementById("rBody").textContent = result.body;
+      document.getElementById("rBody").innerHTML = result.body.split("\n\n").map(p => `<p>${p}</p>`).join("");
       document.getElementById("rTip").textContent = result.tip;
+      const ctaLines = result.cta.split("\n");
+      document.getElementById("rCta").innerHTML = ctaLines.map((line, i) => `<p>${line}</p>`).join("");
       // GA-spårning
       gtag('event', 'quiz_completed', { event_category: 'Quiz', event_label: result.label });
       const total = Qs.length; const br = document.getElementById("barRow"); br.innerHTML = "";
