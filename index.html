@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kalibrera din riktning – RE-VOLT</title>
   <meta name="description" content="Testa din egen riktning och få konkreta tips utifrån var du befinner dig just nu." />
+
+  <!-- Google Analytics (laddas endast efter samtycke) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', { analytics_storage: 'denied' });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LGQC9CEPEM"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-LGQC9CEPEM');
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -131,6 +143,44 @@
     .book-btn-secondary:hover { background: #f5f5f5; }
     .btn-restart { display: block; margin-top: 1rem; padding: 8px 0; background: transparent; border: none; font-size: 13px; color: #aaa; cursor: pointer; font-family: inherit; text-align: left; }
     .btn-restart:hover { color: #666; }
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #1a2e1b;
+      color: rgba(255,255,255,0.85);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 13px;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+    .cookie-banner p { flex: 1; min-width: 200px; line-height: 1.5; }
+    .cookie-banner a { color: #ffcc00; text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 8px; flex-shrink: 0; }
+    .cookie-btn-accept {
+      padding: 8px 16px;
+      background: #ffcc00;
+      color: #1a1200;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .cookie-btn-decline {
+      padding: 8px 16px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: inherit;
+    }
     @media (max-width: 480px) {
       .card { padding: 1.5rem; }
       .q-text { font-size: 17px; }
@@ -266,6 +316,8 @@
       document.getElementById("rState").textContent = result.label;
       document.getElementById("rBody").textContent = result.body;
       document.getElementById("rTip").textContent = result.tip;
+      // GA-spårning
+      gtag('event', 'quiz_completed', { event_category: 'Quiz', event_label: result.label });
       const total = Qs.length; const br = document.getElementById("barRow"); br.innerHTML = "";
       const labels = { press: "Tryck", flöde: "Överflöd", välmående: "Välmående" };
       Object.entries(scores).forEach(([k,v]) => { const pct = Math.round((v/total)*100); br.innerHTML += "<div class=\"bar-item\"><div class=\"bar-name\">"+labels[k]+"</div><div class=\"bar-track\"><div class=\"bar-fill"+(tied.includes(k)?"":" low")+"\" style=\"width:"+pct+"%\"></div></div></div>"; });
@@ -285,6 +337,33 @@
       document.getElementById("djupareArrow").classList.remove("open");
     }
     render();
+  </script>
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Den här sidan använder cookies. <a href="https://re-volt.se/policy/integrity-policy" target="_blank">Läs mer</a>.</p>
+    <div class="cookie-btns">
+      <button class="cookie-btn-decline" onclick="declineCookies()">Nej tack</button>
+      <button class="cookie-btn-accept" onclick="acceptCookies()">Godkänn</button>
+    </div>
+  </div>
+
+  <script>
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'granted');
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+    function declineCookies() {
+      localStorage.setItem('cookie_consent', 'denied');
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+    // Kontrollera om användaren redan valt
+    const consent = localStorage.getItem('cookie_consent');
+    if (consent === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      document.getElementById('cookieBanner').style.display = 'none';
+    } else if (consent === 'denied') {
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
   </script>
 </body>
 </html>
