@@ -102,9 +102,10 @@
     .bar-track { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; background: #3B6D11; transition: width 0.5s ease; }
     .bar-fill.low { background: #ddd; }
-    .djupare-toggle { padding-top: 1.25rem; border-top: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; }
-    .djupare-toggle-label { font-size: 13px; font-weight: 500; color: #111; }
-    .djupare-toggle-arrow { font-size: 13px; color: #aaa; transition: transform 0.2s; }
+    .djupare-toggle { padding-top: 1.25rem; border-top: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: #ffcc00; border-radius: 8px; padding: 13px 18px; margin-top: 1.25rem; transition: filter 0.15s; }
+    .djupare-toggle:hover { filter: brightness(1.08); }
+    .djupare-toggle-label { font-size: 14px; font-weight: 600; color: #1a1200; }
+    .djupare-toggle-arrow { font-size: 13px; color: #1a1200; transition: transform 0.2s; opacity: 0.6; }
     .djupare-toggle-arrow.open { transform: rotate(180deg); }
     .djupare-panel { display: none; margin-top: 1rem; }
     .djupare-panel.open { display: block; animation: fi 0.22s ease; }
@@ -145,7 +146,16 @@
   </div>
 
   <div class="card">
-    <div id="quiz">
+    <div id="intro">
+      <p class="r-eyebrow" style="margin-bottom: 10px;">Kalibrering</p>
+      <h2 class="r-state" style="margin-bottom: 14px;">Vart pekar din riktning just nu?</h2>
+      <p class="r-body">Svara på sex korta frågor om hur du fattar beslut, var din energi tar vägen och vad som faktiskt styr dig just nu.</p>
+      <p class="r-body">Det tar ungefär två minuter. Du får sedan en bild av vilket tillstånd din riktning rör sig mot – och ett konkret tips att ta med dig.</p>
+      <p class="r-body" style="color: #888; font-size: 13px;">Inga rätt eller fel. Välj det som stämmer mest just nu.</p>
+      <button class="book-btn book-btn-primary" style="margin-top: 1.5rem; border: none; cursor: pointer; font-family: inherit;" onclick="startQuiz()">Kalibrera min riktning →</button>
+    </div>
+
+    <div id="quiz" style="display:none;">
       <div class="progress-row" id="prog"></div>
       <p class="q-label" id="qlabel">Fråga 1 av 6</p>
       <h2 class="q-text" id="qtext"></h2>
@@ -174,10 +184,16 @@
         <div class="djupare-panel" id="djuparePanel">
           <div class="djupare-text">
             <p>Det är precis det RE-VOLT Rise är byggt för.</p>
-            <p>Inte som ett program du går igenom – utan som en period där du faktiskt stannar upp och tittar på vad som styr ditt skapande just nu. Beslut, riktning, tillstånd, vad som kostar och vad som bär.</p>
-            <p>Det som brukar hända är att du ser tydligare vad som redan är sant – och vad som håller dig kvar där du inte längre behöver vara. Du får hjälp att våga välja bort saker för att ge plats åt nya.</p>
-            <p>Det praktiska är att mycket av jobbet behöver du inte göra aktivt. 45 min varannan vecka och kanske 5–10 min aktivt några gånger i veckan räcker långt.</p>
-            <p>Nästa steg är ett samtal. Inga krav på prestation – vår agenda är att se om det är rätt läge och rätt matchning. Du kommer garanterat få med dig något nytt att reflektera kring oavsett hur du går vidare.</p>
+            <p>Inte som ett program du går igenom – utan som en period där du stannar upp och börjar se vad som faktiskt styr dina beslut. Inte bara i företaget, utan i dig.</p>
+            <p>De flesta som kommer hit är inte i kris. De är kapabla. De får saker att hända.</p>
+            <p>Men någonstans har det som tidigare drivit dem framåt blivit till brus. Och det bruset påverkar mer än de tror – i riktning, energi och resultat.</p>
+            <p>Det som händer i Rise är att du får klarhet i vad du faktiskt vill med ditt företag – och vad som gör att du idag inte bygger därifrån.</p>
+            <p>Därifrån förändras besluten. Inte för att du anstränger dig mer – utan för att du bygger från en annan plats.</p>
+            <p>Det kräver inte mer av din tid. För de flesta handlar det inte om att lägga till – utan om att skala bort.</p>
+            <p>Vi jobbar med konkreta verktyg som personligt anpassade affirmationer och kvantfrågor, som gör att skiftet fortsätter även mellan våra samtal.</p>
+            <p>45 minuter varannan vecka är ramen. Resten handlar om att arbeta med rätt saker – konsekvent över tid.</p>
+            <p>Nästa steg är ett samtal. Inte för att prestera – utan för att se om det här är rätt läge och rätt matchning.</p>
+            <p>Du kommer ganska snabbt känna om det här är något du behöver just nu.</p>
           </div>
           <div class="book-btns">
             <a class="book-btn book-btn-primary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/EGntA_O7WU6tTOkBhgVyHw2?anonymous&ep=mlink" target="_blank">Boka 30 min strategisamtal</a>
@@ -191,12 +207,12 @@
 
   <script>
     const Qs = [
-      { q: "Hur fattar du de flesta beslut just nu?", opts: [{ t: "Reaktivt – det händer mestadels när det inte längre går att skjuta upp", s: "press" }, { t: "Svårt att välja – för många alternativ som verkar ungefär lika rimliga", s: "flöde" }, { t: "Sällan – det är inte akut nog att behöva bestämma sig", s: "välmående" }] },
+      { q: "Hur fattar du de flesta beslut just nu?", opts: [{ t: "Reaktivt – det händer mestadels när det inte längre går att skjuta upp", s: "press" }, { t: "Svårt att välja – för många alternativ som verkar ungefär lika rimliga", s: "flöde" }, { t: "Tar sällan beslut – det är inte akut nog att behöva bestämma sig", s: "välmående" }] },
       { q: "Vad stämmer mest med hur verksamheten ser ut just nu?", opts: [{ t: "Jag är alltid efter – och det märks", s: "press" }, { t: "Jag har för mycket igång och inget är riktigt klart", s: "flöde" }, { t: "Det rullar på. Men det saknas något", s: "välmående" }] },
       { q: "Vad stjäler mest av din energi?", opts: [{ t: "Att alltid behöva överprestera för att hålla tempot", s: "press" }, { t: "Att inte kunna landa i något", s: "flöde" }, { t: "Att inte riktigt förstå varför jag gör det jag gör", s: "välmående" }] },
-      { q: "Hur ser din inre dialog ut den senaste veckan?", opts: [{ t: "Mycket \"borde\", \"måste\", \"hinner inte\"", s: "press" }, { t: "Hoppande mellan idéer – svårt att hålla fast vid en", s: "flöde" }, { t: "Ganska tyst. Men inte på ett bra sätt", s: "välmående" }] },
+      { q: "Hur ser din inre dialog ut den senaste veckan?", opts: [{ t: "Mycket \"borde\", \"måste\", \"hinner inte\"", s: "press" }, { t: "Hoppar mellan idéer – svårt att hålla fast vid en", s: "flöde" }, { t: "Ganska tyst. Men inte på ett bra sätt", s: "välmående" }] },
       { q: "Hur förhåller du dig till din riktning?", opts: [{ t: "Jag vet vart jag ska – problemet är att jag aldrig hinner dit", s: "press" }, { t: "Jag har för många riktningar att välja mellan", s: "flöde" }, { t: "Jag vet inte riktigt – och det stör mig mer och mer", s: "välmående" }] },
-      { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I att göra mer och snabbare", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }] }
+      { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I action – genom ökad aktivitet och effektivitet", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }] }
     ];
     const R = {
       press: { label: "Tryck", body: "Du har tendens att byta ut klarhet mot fart. Nervsystemet är påkopplat och besluten sker reaktivt – inte utifrån riktning. Det är inte lathet som saknas. Det är pause.", tip: "Välj en sak att inte göra den närmaste veckan. Inte för att slappna av – utan för att se vad som faktiskt håller när trycket lyfts lite." },
@@ -255,13 +271,18 @@
       Object.entries(scores).forEach(([k,v]) => { const pct = Math.round((v/total)*100); br.innerHTML += "<div class=\"bar-item\"><div class=\"bar-name\">"+labels[k]+"</div><div class=\"bar-track\"><div class=\"bar-fill"+(tied.includes(k)?"":" low")+"\" style=\"width:"+pct+"%\"></div></div></div>"; });
       const ri = document.getElementById("resultInner"); ri.classList.remove("fade"); void ri.offsetWidth; ri.classList.add("fade");
     }
+    function startQuiz() {
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      render();
+    }
     function restart() {
       cur = 0; sel = null; scores = { press: 0, flöde: 0, välmående: 0 }; history = [];
-      document.getElementById("quiz").style.display = "block";
       document.getElementById("result").style.display = "none";
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("intro").style.display = "block";
       document.getElementById("djuparePanel").classList.remove("open");
       document.getElementById("djupareArrow").classList.remove("open");
-      render();
     }
     render();
   </script>
