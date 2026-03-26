@@ -117,7 +117,7 @@
     .bar-fill { height: 100%; border-radius: 2px; background: #3B6D11; transition: width 0.5s ease; }
     .r-cta { font-size: 13px; color: #333; line-height: 1.75; margin-bottom: 1.5rem; }
     .r-cta p { margin-bottom: 0.5rem; }
-    .r-cta p:last-child { font-weight: 700; margin-bottom: 0; }
+    .r-cta p:last-child { font-weight: 600; margin-bottom: 0; }
     .bar-fill.low { background: #ddd; }
     .djupare-toggle { padding-top: 1.25rem; border-top: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: #ffcc00; border-radius: 8px; padding: 13px 18px; margin-top: 1.25rem; transition: filter 0.15s; }
     .djupare-toggle:hover { filter: brightness(1.08); }
@@ -226,13 +226,13 @@
       <div id="resultInner" class="fade">
         <p class="r-eyebrow" id="rEyebrow">Du har tendens att röra dig mot</p>
         <h2 class="r-state" id="rState"></h2>
-        <p class="r-body" id="rBody"></p>
+        <div class="r-body" id="rBody"></div>
         <div class="r-tip">
           <p class="r-tip-label">Testa detta</p>
           <p class="r-tip-text" id="rTip"></p>
         </div>
         <div class="bar-row" id="barRow"></div>
-        <p class="r-cta" id="rCta"></p>
+        <div class="r-cta" id="rCta"></div>
         <div class="djupare-toggle" onclick="toggleDjupare()">
           <span class="djupare-toggle-label">Vill du gå djupare?</span>
           <span class="djupare-toggle-arrow" id="djupareArrow">&#8964;</span>
@@ -265,7 +265,7 @@
     const Qs = [
       { q: "Hur fattar du de flesta beslut just nu?", opts: [{ t: "Reaktivt – det händer mestadels när det inte längre går att skjuta upp", s: "press" }, { t: "Svårt att välja – för många alternativ som verkar ungefär lika rimliga", s: "flöde" }, { t: "Tar sällan beslut – det är inte akut nog att behöva bestämma sig", s: "välmående" }] },
       { q: "Vad stämmer mest med hur verksamheten ser ut just nu?", opts: [{ t: "Jag är alltid efter – och det märks", s: "press" }, { t: "Jag har för mycket igång och inget är riktigt klart", s: "flöde" }, { t: "Det rullar på. Men det saknas något", s: "välmående" }] },
-      { q: "Vad stjäler mest av din energi?", opts: [{ t: "Att alltid behöva överprestera för att hålla tempot", s: "press" }, { t: "Att inte kunna landa i något", s: "flöde" }, { t: "Att inte riktigt förstå varför jag gör det jag gör", s: "välmående" }] },
+      { q: "Vad stjäl mest av din energi?", opts: [{ t: "Att alltid behöva överprestera för att hålla tempot", s: "press" }, { t: "Att inte kunna landa i något", s: "flöde" }, { t: "Att inte riktigt förstå varför jag gör det jag gör", s: "välmående" }] },
       { q: "Hur ser din inre dialog ut den senaste veckan?", opts: [{ t: "Mycket \"borde\", \"måste\", \"hinner inte\"", s: "press" }, { t: "Hoppar mellan idéer – svårt att hålla fast vid en", s: "flöde" }, { t: "Ganska tyst. Men inte på ett bra sätt", s: "välmående" }] },
       { q: "Hur förhåller du dig till din riktning?", opts: [{ t: "Jag vet vart jag ska – problemet är att jag aldrig hinner dit", s: "press" }, { t: "Jag har för många riktningar att välja mellan", s: "flöde" }, { t: "Jag vet inte riktigt – och det stör mig mer och mer", s: "välmående" }] },
       { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I action – genom ökad aktivitet och effektivitet", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }] }
@@ -277,11 +277,11 @@
     };
     const tieResults = {
       "flöde+press": { label: "Tryck & Överflöd", cta: "Om du känner att du både driver och startar mycket – men att inget riktigt får landa…\ndå kan det finnas värde i att stanna upp och känna efter vad som faktiskt är viktigt för dig här och nu.\nInte allt på en gång – men kanske är det dags att börja välja bort.", body: "Det ser ut som att du både driver och startar mycket.\n\nDet händer saker – men kanske inte alltid i en riktning som får landa.\n\nDu skapar rörelse, men det kan vara svårt att känna vad som faktiskt är viktigast.\n\nKanske märker du att mycket känns aktuellt – samtidigt.", tip: "Testa att avsluta något du redan har påbörjat innan du startar något nytt. Inte som disciplin – utan för att känna vad som faktiskt är värt att bära vidare." },
-      "press+välmående": { label: "Tryck & Välmående", cta: "Om du känner igen dig i att både vilja framåt – och samtidigt hålla kvar i det som fungerar…\ndå är det ofta där riktningen blir otydlig.\nInte för att något är fel – utan för att något nytt inte riktigt fått ta plats än.", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen de kanske inte alltid drar åt samma håll.\n\nEn del av dig vill framåt – medan en annan vill behålla det som redan fungerar.\n\nDet kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar." },
-      "flöde+välmående": { label: "Överflöd & Välmående", cta: "Om du har utrymme och möjligheter – men inte riktigt känner vad som engagerar fullt ut…\ndå handlar det sällan om att göra mer.\nUtan om att komma närmare vad som faktiskt är värt din energi.", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt.\n\nDet fungerar – men kanske inte fullt ut engagerar.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
+      "press+välmående": { label: "Tryck & Välmående", cta: "Om du känner igen dig i att både vilja framåt – och samtidigt hålla kvar i det som fungerar…\ndå är det ofta där riktningen blir otydlig.\nInte för att något är fel – utan för att du ännu inte valt det som faktiskt vill fram.", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen de kanske inte alltid drar åt samma håll.\n\nEn del av dig vill framåt – medan en annan vill behålla det som redan fungerar.\n\nDet kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar." },
+      "flöde+välmående": { label: "Överflöd & Välmående", cta: "Om du har utrymme och möjligheter – men inte riktigt känner vad som engagerar fullt ut…\ndå handlar det sällan om att göra mer.\nUtan om att komma närmare vad som faktiskt är värt din energi – och våga stanna där.", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt.\n\nDet fungerar – men kanske inte fullt ut engagerar.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
       "all": { label: "Alla tre", cta: "Om du känner att du kan röra dig mellan olika tillstånd – men inte alltid utifrån ett tydligt val…\ndå kan det vara värt att stanna upp och se vad som faktiskt styr.\nInte bara i situationen – utan i dig.", body: "Det ser ut som att du kan röra dig mellan olika tillstånd. Anpassa, växla tempo, hitta nya vägar.\n\nDet är en styrka.\n\nMen det kan också göra det svårare att stanna i ett val tillräckligt länge.\n\nKanske märker du att du skiftar beroende på situation – mer än utifrån ett tydligt beslut.", tip: "Nästa gång du känner att du skiftar – stanna upp. Fråga dig: \"Är det här ett val jag gör, eller något jag reagerar på?\"" }
     };
-    let cur = 0, sel = null, scores = { press: 0, flöde: 0, välmående: 0 }, history = [];
+    let cur = 0, sel = null, scores = { press: 0, flöde: 0, välmående: 0 }, history = {}, optionOrder = {};
     function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
     function buildProg() {
       const p = document.getElementById("prog"); p.innerHTML = "";
@@ -289,14 +289,28 @@
     }
     function updateBackBtn() { const b = document.getElementById("btnBack"); cur > 0 ? b.classList.remove("hidden") : b.classList.add("hidden"); }
     function render() {
-      sel = null; const q = Qs[cur];
+      sel = null;
+      const q = Qs[cur];
       document.getElementById("qlabel").textContent = "Fråga " + (cur+1) + " av " + Qs.length;
       document.getElementById("qtext").textContent = q.q;
       document.getElementById("hint").textContent = "Välj det som stämmer mest just nu";
       document.getElementById("btnNext").classList.remove("vis");
       updateBackBtn();
+      if (!optionOrder[cur]) { optionOrder[cur] = shuffle(q.opts); }
       const c = document.getElementById("opts"); c.innerHTML = "";
-      shuffle(q.opts).forEach(o => { const b = document.createElement("button"); b.className = "opt"; b.textContent = o.t; b.onclick = () => pick(b, o.s); c.appendChild(b); });
+      optionOrder[cur].forEach(o => {
+        const b = document.createElement("button");
+        b.className = "opt";
+        b.textContent = o.t;
+        if (history[cur] === o.s) {
+          b.classList.add("sel");
+          sel = o.s;
+          document.getElementById("btnNext").classList.add("vis");
+          document.getElementById("hint").textContent = "";
+        }
+        b.onclick = () => pick(b, o.s);
+        c.appendChild(b);
+      });
       c.classList.remove("fade"); void c.offsetWidth; c.classList.add("fade");
       buildProg();
     }
@@ -306,9 +320,24 @@
       document.getElementById("hint").textContent = "";
       document.getElementById("btnNext").classList.add("vis");
     }
-    document.getElementById("btnNext").onclick = function() { if (!sel) return; history.push(sel); scores[sel]++; cur++; if (cur >= Qs.length) showResult(); else render(); };
-    document.getElementById("btnBack").onclick = function() { if (cur === 0) return; const prev = history.pop(); scores[prev]--; cur--; render(); };
-    function toggleDjupare() { const p = document.getElementById("djuparePanel"), a = document.getElementById("djupareArrow"), o = p.classList.toggle("open"); a.classList.toggle("open", o); }
+    document.getElementById("btnNext").onclick = function() {
+      if (!sel) return;
+      if (!history[cur]) scores[sel]++;
+      else if (history[cur] !== sel) { scores[history[cur]]--; scores[sel]++; }
+      history[cur] = sel;
+      cur++;
+      if (cur >= Qs.length) showResult(); else render();
+    };
+    document.getElementById("btnBack").onclick = function() {
+      if (cur === 0) return;
+      cur--;
+      render();
+    };
+    function toggleDjupare() {
+      const p = document.getElementById("djuparePanel"), a = document.getElementById("djupareArrow"), o = p.classList.toggle("open");
+      a.classList.toggle("open", o);
+      if (o) { gtag('event', 'djupare_opened', { event_category: 'Quiz', event_label: document.getElementById("rState").textContent }); }
+    }
     function showResult() {
       document.getElementById("quiz").style.display = "none";
       document.getElementById("result").style.display = "block";
@@ -337,7 +366,7 @@
       render();
     }
     function restart() {
-      cur = 0; sel = null; scores = { press: 0, flöde: 0, välmående: 0 }; history = [];
+      cur = 0; sel = null; scores = { press: 0, flöde: 0, välmående: 0 }; history = {}; optionOrder = {};
       document.getElementById("result").style.display = "none";
       document.getElementById("quiz").style.display = "none";
       document.getElementById("intro").style.display = "block";
@@ -359,10 +388,12 @@
       localStorage.setItem('cookie_consent', 'granted');
       gtag('consent', 'update', { analytics_storage: 'granted' });
       document.getElementById('cookieBanner').style.display = 'none';
+      document.body.style.paddingTop = '';
     }
     function declineCookies() {
       localStorage.setItem('cookie_consent', 'denied');
       document.getElementById('cookieBanner').style.display = 'none';
+      document.body.style.paddingTop = '';
     }
     // Kontrollera om användaren redan valt
     const consent = localStorage.getItem('cookie_consent');
@@ -371,6 +402,12 @@
       document.getElementById('cookieBanner').style.display = 'none';
     } else if (consent === 'denied') {
       document.getElementById('cookieBanner').style.display = 'none';
+    } else {
+      // Bannern visas — lägg till padding så headern inte döljs
+      window.addEventListener('load', function() {
+        const bannerH = document.getElementById('cookieBanner').offsetHeight;
+        document.body.style.paddingTop = bannerH + 'px';
+      });
     }
   </script>
 </body>
