@@ -111,12 +111,10 @@
     .r-tip-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3B6D11; margin-bottom: 5px; }
     .r-tip-text { font-size: 13px; color: #27500A; line-height: 1.65; }
     .bar-row { display: flex; gap: 8px; padding-top: 1.25rem; border-top: 1px solid #f0f0f0; margin-bottom: 1.5rem; }
-    .bar-row-label { font-size: 11px; color: #aaa; margin-bottom: 10px; letter-spacing: 0.04em; }
     .bar-item { flex: 1; }
     .bar-name { font-size: 11px; color: #aaa; margin-bottom: 5px; }
     .bar-track { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
     .bar-fill { height: 100%; border-radius: 2px; background: #3B6D11; transition: width 0.5s ease; }
-    .bar-fill.winner { height: 6px; margin-top: -1px; }
     .r-cta { font-size: 13px; color: #333; line-height: 1.75; margin-bottom: 1.5rem; }
     .r-cta p { margin-bottom: 0.5rem; }
     .r-cta p:last-child { font-weight: 600; margin-bottom: 0; }
@@ -206,7 +204,7 @@
     <div id="intro">
       <p class="r-eyebrow" style="margin-bottom: 10px;">Kalibrering</p>
       <h2 class="r-state" style="margin-bottom: 14px;">Vart pekar din riktning just nu?</h2>
-      <p class="r-body">Svara på sex korta frågor om hur du fattar beslut, var din energi tar vägen och vad som faktiskt styr dina beslut – även när du tror att du har kontroll.</p>
+      <p class="r-body">Svara på sex korta frågor om hur du fattar beslut, var din energi tar vägen och vad som faktiskt styr dig just nu.</p>
       <p class="r-body">Det tar ungefär två minuter. Du får sedan en bild av vilket tillstånd din riktning rör sig mot – och ett konkret tips att ta med dig.</p>
       <p class="r-body" style="color: #888; font-size: 13px;">Inga rätt eller fel. Välj det som stämmer mest just nu.</p>
       <button class="book-btn book-btn-primary" style="margin-top: 1.5rem; border: none; cursor: pointer; font-family: inherit;" onclick="startQuiz()">Kalibrera min riktning →</button>
@@ -233,7 +231,6 @@
           <p class="r-tip-label">Testa detta</p>
           <p class="r-tip-text" id="rTip"></p>
         </div>
-        <p class="bar-row-label">Det här påverkar dig mest just nu:</p>
         <div class="bar-row" id="barRow"></div>
         <div class="r-cta" id="rCta"></div>
         <div class="djupare-toggle" onclick="toggleDjupare()">
@@ -242,22 +239,14 @@
         </div>
         <div class="djupare-panel" id="djuparePanel">
           <div class="djupare-text">
-            <p id="djupareIntroText" style="font-weight:600;color:#111;"></p>
-            <p>Det är precis det RE-VOLT Rise är byggt för.</p>
-            <p>Inte som ett program du går igenom – utan som en period där du stannar upp och börjar se vad som faktiskt styr dina beslut. Inte bara i företaget, utan i dig.</p>
-            <p>De flesta som kommer hit är inte i kris. De är kapabla. De får saker att hända.</p>
-            <p>Men någonstans har det som tidigare drivit dem framåt blivit till brus. Och det bruset påverkar mer än de tror – i riktning, energi och resultat.</p>
-            <p>Det som händer i Rise är att du får klarhet i vad du faktiskt vill med ditt företag – och vad som gör att du idag inte bygger därifrån.</p>
-            <p>Därifrån förändras besluten. Inte för att du anstränger dig mer – utan för att du bygger från en annan plats.</p>
-            <p>Det kräver inte mer av din tid. För de flesta handlar det inte om att lägga till – utan om att skala bort.</p>
-            <p>Vi arbetar med verktyg som gör att skiftet fortsätter – även mellan våra samtal.</p>
-            <p>45 minuter varannan vecka är ramen. Resten handlar om att arbeta med rätt saker – konsekvent över tid.</p>
-            <p>Nästa steg är ett samtal. Inte för att prestera – utan för att se om det här är rätt läge och rätt matchning.</p>
-            <p>Du kommer ganska snabbt känna om det här är något du behöver just nu.</p>
+            <p>Quizet ger dig en bild.</p>
+            <p>En kalibrering sätter fokus på var du faktiskt behöver börja.</p>
+            <p>Du svarar på några frågor innan vi ses. Utifrån det lägger vi vår tid på rätt fokus. Du lämnar med ett konkret nästa steg — oavsett om vi fortsätter tillsammans eller inte.</p>
+            <p>Det kostar dig ingenting.</p>
+            <p>Syftet är att se om vi är en match.</p>
           </div>
           <div class="book-btns">
-            <a class="book-btn book-btn-primary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/EGntA_O7WU6tTOkBhgVyHw2?anonymous&ep=mlink" target="_blank">Boka ett första samtal</a>
-            <a class="book-btn book-btn-secondary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/1ezsnHu52EOShxJ3-_BduA2?bookingcode=42e5b203-5cb6-43d7-8811-5629a38eef85&anonymous&ep=mlink" target="_blank">Läs mer om RE-VOLT Rise</a>
+            <a class="book-btn book-btn-primary" href="https://outlook.office.com/bookwithme/user/86e43ea7e669461f8a1ca7220b707b46@re-volt.se/meetingtype/EGntA_O7WU6tTOkBhgVyHw2?anonymous&ep=mlink" target="_blank">Boka en kalibrering</a>
           </div>
         </div>
       </div>
@@ -267,37 +256,25 @@
 
   <script>
     const Qs = [
-      { q: "Hur fattar du de flesta beslut just nu?", opts: [{ t: "Reaktivt – det händer mestadels när det inte längre går att skjuta upp", s: "press" }, { t: "Svårt att välja – för många alternativ som verkar ungefär lika rimliga", s: "flöde" }, { t: "Tar sällan beslut – det är inte akut nog att behöva bestämma sig", s: "välmående" }, { t: "Metodiskt – jag upplever att jag har koll på processen", s: "riktning" }] },
-      { q: "Vad stämmer mest med hur verksamheten ser ut just nu?", opts: [{ t: "Jag är alltid efter – och det märks", s: "press" }, { t: "Jag har för mycket igång och inget är riktigt klart", s: "flöde" }, { t: "Det rullar på. Men det saknas något", s: "välmående" }, { t: "Det går bra – jag levererar och verksamheten växer", s: "riktning" }] },
-      { q: "Vad stjäl mest av din energi?", opts: [{ t: "Att alltid behöva överprestera för att hålla tempot", s: "press" }, { t: "Att inte kunna landa i något", s: "flöde" }, { t: "Att inte riktigt förstå varför jag gör det jag gör", s: "välmående" }, { t: "Att hitta nästa nivå", s: "riktning" }] },
-      { q: "Hur ser din inre dialog ut den senaste veckan?", opts: [{ t: "Mycket \"borde\", \"måste\", \"hinner inte\"", s: "press" }, { t: "Hoppar mellan idéer – svårt att hålla fast vid en", s: "flöde" }, { t: "Ganska tyst. Men inte på ett bra sätt", s: "välmående" }, { t: "Jag vet vad jag ska göra – bra mix mellan medhåll och motfrågor", s: "riktning" }] },
-      { q: "Hur förhåller du dig till din riktning?", opts: [{ t: "Jag vet vart jag ska – problemet är att jag aldrig hinner dit", s: "press" }, { t: "Jag har för många riktningar att välja mellan", s: "flöde" }, { t: "Jag vet inte riktigt – och det stör mig mer och mer", s: "välmående" }, { t: "Jag har en tydlig riktning jag jobbar mot", s: "riktning" }] },
-      { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I action – genom ökad aktivitet och effektivitet", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }, { t: "Jag börjar inse att det jag jagar kanske inte är det jag egentligen vill ha", s: "riktning" }] }
+      { q: "Hur fattar du de flesta beslut just nu?", opts: [{ t: "Reaktivt – det händer mestadels när det inte längre går att skjuta upp", s: "press" }, { t: "Svårt att välja – för många alternativ som verkar ungefär lika rimliga", s: "flöde" }, { t: "Tar sällan beslut – det är inte akut nog att behöva bestämma sig", s: "välmående" }] },
+      { q: "Vad stämmer mest med hur verksamheten ser ut just nu?", opts: [{ t: "Jag är alltid efter – och det märks", s: "press" }, { t: "Jag har för mycket igång och inget är riktigt klart", s: "flöde" }, { t: "Det rullar på. Men det saknas något", s: "välmående" }] },
+      { q: "Vad stjäl mest av din energi?", opts: [{ t: "Att alltid behöva överprestera för att hålla tempot", s: "press" }, { t: "Att inte kunna landa i något", s: "flöde" }, { t: "Att inte riktigt förstå varför jag gör det jag gör", s: "välmående" }] },
+      { q: "Hur ser din inre dialog ut den senaste veckan?", opts: [{ t: "Mycket \"borde\", \"måste\", \"hinner inte\"", s: "press" }, { t: "Hoppar mellan idéer – svårt att hålla fast vid en", s: "flöde" }, { t: "Ganska tyst. Men inte på ett bra sätt", s: "välmående" }] },
+      { q: "Hur förhåller du dig till din riktning?", opts: [{ t: "Jag vet vart jag ska – problemet är att jag aldrig hinner dit", s: "press" }, { t: "Jag har för många riktningar att välja mellan", s: "flöde" }, { t: "Jag vet inte riktigt – och det stör mig mer och mer", s: "välmående" }] },
+      { q: "Om du är helt ärlig – var söker du klarhet just nu?", opts: [{ t: "I action – genom ökad aktivitet och effektivitet", s: "press" }, { t: "I nästa möjlighet eller idé", s: "flöde" }, { t: "Jag söker den inte aktivt just nu", s: "välmående" }] }
     ];
-
     const R = {
-      press: { label: "Tryck", cta: "Om du känner igen dig i tempot men inte riktigt i riktningen — då kan det vara värt att stanna upp och observera vad som faktiskt styr dina beslut just nu.", body: "Det ser ut som att du rör dig snabbt.\n\nFarten verkar finnas där. Drivet också.\n\nKanske märker du att vissa beslut sker mer av nödvändighet än av tydliga val. Att tempot ibland tar över mer än du tänkt dig.", tip: "Testa att välja bort en sak den närmaste veckan. Det betyder inte att du ska bromsa – utan ge dig själv utrymme för att se vad som faktiskt håller även när tempot får sjunka lite." },
-      flöde: { label: "Överflöd", cta: "Om du märker att du har mycket på gång – men inte riktigt känner vad som faktiskt spelar roll… då handlar nästa steg sällan om fler idéer. Utan om att få klarhet i vad som faktiskt är värt att bygga vidare på.", body: "Det ser ut som att du har fler möjligheter att springa på. Och det kan också vara det som gör det svårare att välja.\n\nDet kan innebära att du rör dig framåt – men i flera riktningar samtidigt.\n\nKanske märker du att mycket påbörjas, men inte alltid får landa fullt ut. När allt känns möjligt och spännande kan fokus och struktur ibland bli lidande.", tip: "Skriv ned allt du har igång. Se vad som faktiskt vill få din uppmärksamhet just nu. Välj ett spår som du håller tillräckligt länge för att något ska hinna bli klart." },
-      välmående: { label: "Välmående", cta: "Om det fungerar – men inte riktigt känns som du vill att det ska… då är det ofta där något nytt vill ta form. Ibland räcker det att våga se vad du redan vet för att nya möjligheter ska skapas.", body: "Det ser ut som att du har byggt något som fungerar. Och det kan också vara det som gör det svårare att ifrågasätta.\n\nDet är sällan en tydlig kris – men kanske märker du att något har stannat av.\n\nFriktionen som en gång drev dig framåt finns kanske inte riktigt kvar på samma sätt. Det fungerar – men kanske inte fullt ut som du egentligen vill.", tip: "Hitta en fråga du undviker att ställa dig själv. Skriv ned den. Svaret kan innebära att du behöver välja igen." },
-      riktning: { label: "Riktning", cta: "Tider då saker fungerar är ibland den bästa tiden att våga stanna upp och ifrågasätta dina val. Gör du det du gör för att du vill – eller för att du lärt dig bli riktigt duktig på att göra det?", body: "Det ser ut som att du har kapaciteten och strukturen på plats.\n\nTroligtvis så skapar du resultat och håller vad du lovar.\n\nFrågan du kanske börjar ställa dig är om du skapar de resultat som faktiskt spelar roll för dig.", tip: "Hitta 20 minuter den här veckan där du inte löser något. Ingen agenda. Ingen planering. Bara frågan: om jag fick göra precis vad jag vill – skulle jag då planera in det jag har på kalendern imorgon?" }
+      press: { label: "Tryck", cta: "Om du känner igen dig i tempot – men inte riktigt i riktningen…\ndå kan det vara värt att stanna upp och se vad som faktiskt styr dina beslut just nu.\nInte för att göra mindre – utan för att börja röra dig i något som är ditt.", body: "Det ser ut som att du rör dig snabbt – men inte alltid med full klarhet i riktningen.\n\nFarten finns där. Drivet också.\n\nMen det kan vara så att vissa beslut sker mer reaktivt än utifrån vad du faktiskt vill.\n\nInte för att du saknar kapacitet – utan för att tempot ibland tar över.", tip: "Testa att välja bort en sak den närmaste veckan. Inte för att bromsa – utan för att se vad som faktiskt håller när tempot får sjunka lite." },
+      flöde: { label: "Överflöd", cta: "Om du märker att du har mycket på gång – men inte riktigt känner vad som faktiskt spelar roll…\ndå handlar nästa steg sällan om fler idéer.\nUtan om att få klarhet i vad som faktiskt är värt att bygga vidare på.", body: "Det ser ut som att du har fler möjligheter än de flesta.\n\nOch det kan också vara det som gör det svårare att välja.\n\nDu rör dig framåt – men i flera riktningar samtidigt.\n\nKanske märker du att mycket påbörjas, men inte alltid får landa fullt ut. Inte för att du saknar potential – utan för att allt känns möjligt.", tip: "Skriv ned allt du har igång. Se vad som faktiskt vill få din uppmärksamhet just nu. Välj ett spår – inte för alltid, men tillräckligt länge för att något ska hinna bli klart." },
+      välmående: { label: "Välmående", cta: "Om det fungerar – men inte riktigt känns som du vill att det ska…\ndå är det ofta där något nytt vill ta form.\nInte genom att göra mer, utan genom att våga se vad du kanske redan vet.", body: "Det ser ut som att du har byggt något som fungerar.\n\nOch det kan också vara det som gör det svårare att ifrågasätta.\n\nDet är sällan en tydlig kris – men kanske märker du att något har stannat av.\n\nFriktionen som en gång drev dig framåt finns inte riktigt kvar på samma sätt. Det fungerar – men kanske inte fullt ut som du egentligen vill.", tip: "Hitta en fråga du undviker att ställa dig själv. Skriv ned den. Inte för att den är farlig – utan för att svaret kan innebära att du behöver välja igen." }
     };
     const tieResults = {
-      "flöde+press": { label: "Tryck & Överflöd", cta: "Om du känner att du både driver och startar mycket – men att få saker genuint får landa… då kan det finnas värde i att stanna upp och känna efter vad som faktiskt är viktigt för dig här och nu. Kanske är det läge att välja bort istället för att addera?", body: "Det ser ut som att du både driver och startar mycket.\n\nDet händer saker – men kanske inte alltid i en riktning som får landa.\n\nDu skapar rörelse, men kanske det kan vara svårt att känna vad som faktiskt är viktigast. Kanske märker du att mycket känns aktuellt – samtidigt.", tip: "Testa att avsluta något du redan har påbörjat innan du startar något nytt. Försök att känna av under tiden du gör uppgiften om det här är något som är värt att bära vidare." },
-      "press+välmående": { label: "Tryck & Välmående", cta: "Om du känner igen dig i att både vilja framåt – och samtidigt hålla kvar i det som fungerar… då är det ofta där riktningen blir otydlig. Kanske är det dags att ge plats för det som faktiskt vill fram?", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen kraften kanske inte alltid drar åt samma håll.\n\nEn del av dig verkar vilja framåt – medan en annan vill behålla det som redan fungerar. Det kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar med dig själv." },
-      "flöde+välmående": { label: "Överflöd & Välmående", cta: "Om du har utrymme och möjligheter – men inte riktigt känner vad som engagerar fullt ut… då handlar det sällan om att göra mer. Utan om att komma närmare vad som faktiskt är värt din energi och närvaro.", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt. Det fungerar – men blir sällan ett fokuserat driv mot det du faktiskt vill bygga.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
-      "press+riktning": { label: "Tryck & Riktning", cta: "Fokus verkar du ha men frågan är om du driver mot något som faktiskt är ditt – eller om du blivit riktigt duktig på att prestera i en riktning som sattes upp för länge sedan.", body: "Det ser ut som att du både levererar och driver hårt.\n\nDu vet troligtvis både vad du vill och hur man får saker att hända.\n\nFrågan är om tempot du håller är ditt eget val – eller om det formats av förväntningar du en gång tog på dig och aldrig riktigt omförhandlat.", tip: "Titta på din kalender den kommande veckan. Vad där valde du för att du genuint vill – och vad rullar på av gammal vana eller andras behov?" },
-      "flöde+riktning": { label: "Överflöd & Riktning", cta: "Kapaciteten verkar redan finnas. Det intressanta är dock vad som händer när du börjar filtrera möjligheterna genom vad som faktiskt är sant för dig – inte bara vad som är möjligt.", body: "Det ser ut som att du har mycket på gång och att du trivs i det.\n\nDu ser troligtvis möjligheter där andra ser hinder.\n\nMen det finns en skillnad mellan att ha många riktningar och att ha sin riktning.\n\nKanske märker du ibland en röst under ytan som vill få mer utrymme?", tip: "Av allt du har igång just nu – vad skulle du välja om ingen annan visste om det? Vad väljer du för dig och inte för vad det signalerar till andra?" },
-      "riktning+välmående": { label: "Välmående & Riktning", cta: "Det du byggt har skapat en grund för dig. Frågan är om du nu bygger vidare på den – eller om det är dags att se om grunden behöver göras om för det du vill skapa härnäst.", body: "Det ser ut som att du har byggt något som håller.\n\nDu vet troligtvis hur man skapar stabilitet och resultat.\n\nMen stabilitet och riktning är inte samma sak.\n\nIbland är det just när allt fungerar som den djupare frågan börjar knacka – det är då vi kan börja ana att det finns något mer.", tip: "Vad är det du skjutit upp att fråga dig själv – kanske för att du vetat att svaret kan kräva ett obekvämt val?" },
-      "all": { label: "Flera tillstånd", cta: "Om du känner att du kan röra dig mellan olika tillstånd – men inte alltid utifrån ett tydligt val… då kan det vara värt att stanna upp och se vad som faktiskt styr. Inte bara i situationen – utan i dig.", body: "Det ser ut som att du kan röra dig mellan olika tillstånd.\n\nAnpassa, växla tempo, hitta nya vägar.\n\nDet är en styrka.\n\nMen det kan också göra det svårare att stanna i ett val tillräckligt länge. Kanske märker du att du skiftar beroende på situation – mer än utifrån ett tydligt beslut?", tip: "Nästa gång du känner att du skiftar – stanna upp och fråga dig: 'Är det här ett val jag gör, eller något jag reagerar på?'" }
+      "flöde+press": { label: "Tryck & Överflöd", cta: "Om du känner att du både driver och startar mycket – men att inget riktigt får landa…\ndå kan det finnas värde i att stanna upp och känna efter vad som faktiskt är viktigt för dig här och nu.\nInte allt på en gång – men kanske är det dags att börja välja bort.", body: "Det ser ut som att du både driver och startar mycket.\n\nDet händer saker – men kanske inte alltid i en riktning som får landa.\n\nDu skapar rörelse, men det kan vara svårt att känna vad som faktiskt är viktigast.\n\nKanske märker du att mycket känns aktuellt – samtidigt.", tip: "Testa att avsluta något du redan har påbörjat innan du startar något nytt. Inte som disciplin – utan för att känna vad som faktiskt är värt att bära vidare." },
+      "press+välmående": { label: "Tryck & Välmående", cta: "Om du känner igen dig i att både vilja framåt – och samtidigt hålla kvar i det som fungerar…\ndå är det ofta där riktningen blir otydlig.\nInte för att något är fel – utan för att du ännu inte valt det som faktiskt vill fram.", body: "Det ser ut som att du har både fart och stabilitet.\n\nMen de kanske inte alltid drar åt samma håll.\n\nEn del av dig vill framåt – medan en annan vill behålla det som redan fungerar.\n\nDet kan göra att du rör dig, men utan att riktigt kliva fullt ut.", tip: "Testa att välja en sak den här veckan som du gör helt och hållet utifrån eget val. Inte av vana. Inte av krav. Se vad som händer när du inte kompromissar." },
+      "flöde+välmående": { label: "Överflöd & Välmående", cta: "Om du har utrymme och möjligheter – men inte riktigt känner vad som engagerar fullt ut…\ndå handlar det sällan om att göra mer.\nUtan om att komma närmare vad som faktiskt är värt din energi – och våga stanna där.", body: "Det ser ut som att du har både utrymme och möjligheter.\n\nOch kanske är det just det som gör det svårare att välja riktning.\n\nNär inget riktigt pressar på kan allt kännas ungefär lika viktigt.\n\nDet fungerar – men kanske inte fullt ut engagerar.", tip: "Sätt dig i en situation där du behöver välja. Gärna tillsammans med någon annan, så att beslutet inte bara stannar i tanken." },
+      "all": { label: "Alla tre", cta: "Om du känner att du kan röra dig mellan olika tillstånd – men inte alltid utifrån ett tydligt val…\ndå kan det vara värt att stanna upp och se vad som faktiskt styr.\nInte bara i situationen – utan i dig.", body: "Det ser ut som att du kan röra dig mellan olika tillstånd. Anpassa, växla tempo, hitta nya vägar.\n\nDet är en styrka.\n\nMen det kan också göra det svårare att stanna i ett val tillräckligt länge.\n\nKanske märker du att du skiftar beroende på situation – mer än utifrån ett tydligt beslut.", tip: "Nästa gång du känner att du skiftar – stanna upp. Fråga dig: \"Är det här ett val jag gör, eller något jag reagerar på?\"" }
     };
-    const djupareIntro = {
-      press: "Du behöver inte mer att göra. Du behöver mindre som inte är ditt.",
-      flöde: "Du har inte brist på idéer. Du har brist på en riktning att välja.",
-      välmående: "Det är inte fel att det fungerar. Men det är just därför det är lätt att stanna.",
-      riktning: "Det här är ofta steget precis innan något verkligt skiftar.",
-      default: "Det här är för dig som känner att quizet träffade mer än du hade tänkt."
-    };
-    let cur = 0, sel = null, scores = { press: 0, flöde: 0, välmående: 0, riktning: 0 }, history = {}, optionOrder = {};
+    let cur = 0, sel = null, scores = { press: 0, flöde: 0, välmående: 0 }, history = {}, optionOrder = {};
     function shuffle(a) { return a.slice().sort(() => Math.random() - 0.5); }
     function buildProg() {
       const p = document.getElementById("prog"); p.innerHTML = "";
@@ -361,9 +338,9 @@
       const top = sorted[0][1];
       const tied = sorted.filter(e => e[1] === top).map(e => e[0]).sort();
       let result;
-      if (tied.length === 1) { result = R[tied[0]]; document.getElementById("rEyebrow").textContent = "Ditt mönster just nu:"; }
-      else if (tied.length >= 3) { result = tieResults["all"]; document.getElementById("rEyebrow").textContent = "Ditt mönster just nu:"; }
-      else { result = tieResults[tied.join("+")] || R[tied[0]]; document.getElementById("rEyebrow").textContent = "Ditt mönster just nu:"; }
+      if (tied.length === 1) { result = R[tied[0]]; document.getElementById("rEyebrow").textContent = "Du har tendens att röra dig mot"; }
+      else if (tied.length === 3) { result = tieResults["all"]; document.getElementById("rEyebrow").textContent = "Ditt mönster är fördelat mellan"; }
+      else { result = tieResults[tied.join("+")] || R[tied[0]]; document.getElementById("rEyebrow").textContent = "Ditt mönster rör sig mellan"; }
       document.getElementById("rState").textContent = result.label;
       document.getElementById("rBody").innerHTML = result.body.split("\n\n").map(p => `<p>${p}</p>`).join("");
       document.getElementById("rTip").textContent = result.tip;
@@ -372,10 +349,8 @@
       // GA-spårning
       gtag('event', 'quiz_completed', { event_category: 'Quiz', event_label: result.label });
       const total = Qs.length; const br = document.getElementById("barRow"); br.innerHTML = "";
-      const labels = { press: "Tryck", flöde: "Överflöd", välmående: "Välmående", riktning: "Riktning" };
-      Object.entries(scores).forEach(([k,v]) => { const pct = Math.round((v/total)*100); const isWinner = tied.includes(k); br.innerHTML += "<div class=\"bar-item\"><div class=\"bar-name\">"+labels[k]+"</div><div class=\"bar-track\"><div class=\"bar-fill"+(isWinner?" winner":" low")+"\" style=\"width:"+pct+"%\"></div></div></div>"; });
-      const introKey = tied.length === 1 ? tied[0] : "default";
-      document.getElementById("djupareIntroText").textContent = djupareIntro[introKey] || djupareIntro.default;
+      const labels = { press: "Tryck", flöde: "Överflöd", välmående: "Välmående" };
+      Object.entries(scores).forEach(([k,v]) => { const pct = Math.round((v/total)*100); br.innerHTML += "<div class=\"bar-item\"><div class=\"bar-name\">"+labels[k]+"</div><div class=\"bar-track\"><div class=\"bar-fill"+(tied.includes(k)?"":" low")+"\" style=\"width:"+pct+"%\"></div></div></div>"; });
       const ri = document.getElementById("resultInner"); ri.classList.remove("fade"); void ri.offsetWidth; ri.classList.add("fade");
     }
     function startQuiz() {
@@ -384,7 +359,7 @@
       render();
     }
     function restart() {
-      cur = 0; sel = null; scores = { press: 0, flöde: 0, välmående: 0, riktning: 0 }; history = {}; optionOrder = {};
+      cur = 0; sel = null; scores = { press: 0, flöde: 0, välmående: 0 }; history = {}; optionOrder = {};
       document.getElementById("result").style.display = "none";
       document.getElementById("quiz").style.display = "none";
       document.getElementById("intro").style.display = "block";
